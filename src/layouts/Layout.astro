@@ -5,18 +5,46 @@
 		<meta name="viewport" content="width=device-width" />
 		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
 		<meta name="generator" content={Astro.generator} />
-		<title>Astro Basics</title>
+		<title>Mr Retro Fary</title>
+		<link rel="preconnect" href="https://fonts.googleapis.com">
+		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+		<link href="https://fonts.googleapis.com/css2?family=VT323&display=swap" rel="stylesheet">
 	</head>
 	<body>
+		<div class="crt-overlay"></div>
 		<slot />
 	</body>
 </html>
 
-<style>
+<style is:global>
 	html,
 	body {
 		margin: 0;
 		width: 100%;
 		height: 100%;
+		font-family: 'VT323', monospace;
+		background-color: #cbb4d4; /* Ditto light purple */
+		color: #332b3b;
+		overflow-x: hidden;
+	}
+	
+	* {
+		box-sizing: border-box;
+	}
+
+	.crt-overlay {
+		position: fixed;
+		top: 0;
+		left: 0;
+		width: 100vw;
+		height: 100vh;
+		background: linear-gradient(
+			rgba(18, 16, 16, 0) 50%,
+			rgba(0, 0, 0, 0.1) 50%
+		);
+		background-size: 100% 4px;
+		pointer-events: none;
+		z-index: 9999;
+		opacity: 0.6;
 	}
 </style>
