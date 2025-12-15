@@ -150,9 +150,9 @@ import Layout from '../layouts/Layout.astro';
 					
 					if (subtitle) {
 						subtitle.innerText = "¡Has encontrado a RetroFarDitto!";
-						subtitle.style.color = "#d6a2e8";
+						subtitle.style.color = "#332b3b";
 						subtitle.style.fontWeight = "bold";
-						subtitle.style.textShadow = "1px 1px 0 #332b3b";
+						subtitle.style.textShadow = "1px 1px 0 #d6a2e8";
 					}
 				}, 200);
 				isDitto = true;
@@ -341,12 +341,13 @@ import Layout from '../layouts/Layout.astro';
 	}
 
 	.profile-img {
-		width: 100%;
-		height: 100%;
+		width: 150px;
+		height: 150px;
 		object-fit: cover;
 		border-radius: 50%;
 		border: 4px solid #332b3b;
 		box-shadow: 6px 6px 0px rgba(51, 43, 59, 0.5);
+		transition: transform 0.3s, filter 0.3s;
 	}
 
 	@keyframes float {
@@ -520,7 +521,7 @@ import Layout from '../layouts/Layout.astro';
 
 	.hidden-ditto {
 		position: fixed;
-		bottom: -15px;
+		bottom: 10px;
 		right: 20px;
 		width: 60px;
 		height: 50px;
