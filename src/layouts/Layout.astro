@@ -17,15 +17,42 @@
 </html>
 
 <style is:global>
+	:root {
+		/* Light Mode (default) */
+		--bg-primary: #cbb4d4;
+		--bg-secondary: rgba(255, 255, 255, 0.4);
+		--text-primary: #332b3b;
+		--text-secondary: #fff;
+		--accent-pink: #ff9ff3;
+		--accent-purple: #d6a2e8;
+		--border-color: #332b3b;
+		--shadow-color: rgba(51, 43, 59, 0.5);
+		--crt-opacity: 0.5;
+	}
+
+	:root.dark-mode {
+		/* Dark Mode */
+		--bg-primary: #1a1625;
+		--bg-secondary: rgba(40, 30, 50, 0.8);
+		--text-primary: #e8dff5;
+		--text-secondary: #a78bba;
+		--accent-pink: #ff6bcb;
+		--accent-purple: #9b59b6;
+		--border-color: #6c5b7b;
+		--shadow-color: rgba(0, 0, 0, 0.5);
+		--crt-opacity: 0.15;
+	}
+
 	html,
 	body {
 		margin: 0;
 		width: 100%;
 		height: 100%;
 		font-family: 'VT323', monospace;
-		background-color: #cbb4d4; /* Ditto light purple */
-		color: #332b3b;
+		background-color: var(--bg-primary);
+		color: var(--text-primary);
 		overflow-x: hidden;
+		transition: background-color 0.3s ease, color 0.3s ease;
 	}
 	
 	* {
@@ -45,6 +72,11 @@
 		background-size: 100% 4px;
 		pointer-events: none;
 		z-index: 9999;
-		opacity: 0.6;
+		opacity: var(--crt-opacity);
+		transition: opacity 0.3s ease;
+	}
+
+	.crt-overlay.hidden {
+		opacity: 0 !important;
 	}
 </style>

@@ -3,15 +3,104 @@ import Layout from '../layouts/Layout.astro';
 ---
 
 <Layout>
+	<!-- Loading Screen -->
+	<div class="loading-screen" id="loading-screen">
+		<div class="loading-ditto">
+			<img src="/ditto.gif" alt="Loading..." class="loading-ditto-img" />
+			<p class="loading-text">Cargando...</p>
+		</div>
+	</div>
+
+	<!-- Particles Container -->
+	<div class="particles-container" id="particles-container"></div>
+
+	<!-- Particles Container -->
+	<div class="particles-container" id="particles-container"></div>
+	
+	<main>
+
 	<main>
 		<div class="ditto-bg"></div>
 		
 		<div class="content-wrapper">
-			<!-- Volume Control Inside Card -->
-			<div class="volume-control" title="Toggle Music">
-				<svg class="pixel-icon" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
-					<path d="M5 9v6h4l5 5V4L9 9H5zm18.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02zM14 3.23v2.06c2.89.86 5 3.54 5 6.71s-2.11 5.85-5 6.71v2.06c4.01-.91 7-4.49 7-8.77s-2.99-7.86-7-8.77z"/>
-				</svg>
+			<!-- Settings Controls -->
+			<div class="settings-controls">
+				<!-- Dark Mode Toggle -->
+				<button class="settings-btn" id="dark-mode-toggle" aria-label="Toggle Dark Mode">
+					<svg class="icon-sun" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+						<path d="M12 7c-2.76 0-5 2.24-5 5s2.24 5 5 5 5-2.24 5-5-2.24-5-5-5zM2 13h2c.55 0 1-.45 1-1s-.45-1-1-1H2c-.55 0-1 .45-1 1s.45 1 1 1zm18 0h2c.55 0 1-.45 1-1s-.45-1-1-1h-2c-.55 0-1 .45-1 1s.45 1 1 1zM11 2v2c0 .55.45 1 1 1s1-.45 1-1V2c0-.55-.45-1-1-1s-1 .45-1 1zm0 18v2c0 .55.45 1 1 1s1-.45 1-1v-2c0-.55-.45-1-1-1s-1 .45-1 1zM5.99 4.58c-.39-.39-1.03-.39-1.41 0-.39.39-.39 1.03 0 1.41l1.06 1.06c.39.39 1.03.39 1.41 0s.39-1.03 0-1.41L5.99 4.58zm12.37 12.37c-.39-.39-1.03-.39-1.41 0-.39.39-.39 1.03 0 1.41l1.06 1.06c.39.39 1.03.39 1.41 0 .39-.39.39-1.03 0-1.41l-1.06-1.06zm1.06-10.96c.39-.39.39-1.03 0-1.41-.39-.39-1.03-.39-1.41 0l-1.06 1.06c-.39.39-.39 1.03 0 1.41s1.03.39 1.41 0l1.06-1.06zM7.05 18.36c.39-.39.39-1.03 0-1.41-.39-.39-1.03-.39-1.41 0l-1.06 1.06c-.39.39-.39 1.03 0 1.41s1.03.39 1.41 0l1.06-1.06z"/>
+					</svg>
+					<svg class="icon-moon" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="currentColor" style="display: none;">
+						<path d="M12 3c-4.97 0-9 4.03-9 9s4.03 9 9 9 9-4.03 9-9c0-.46-.04-.92-.1-1.36-.98 1.37-2.58 2.26-4.4 2.26-2.98 0-5.4-2.42-5.4-5.4 0-1.81.89-3.42 2.26-4.4-.44-.06-.9-.1-1.36-.1z"/>
+					</svg>
+					<span class="tooltip">Modo Oscuro</span>
+				</button>
+				
+				<!-- CRT Toggle -->
+				<button class="settings-btn" id="crt-toggle" aria-label="Toggle CRT Effect">
+					<svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+						<path d="M21 3H3c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h5v2h8v-2h5c1.1 0 1.99-.9 1.99-2L23 5c0-1.1-.9-2-2-2zm0 14H3V5h18v12z"/>
+					</svg>
+					<span class="tooltip">Efecto CRT</span>
+				</button>
+
+				<!-- Room Toggle -->
+				<button class="settings-btn" id="room-btn" aria-label="Toggle Retro Room">
+					<svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+						<path d="M3 21h18"/>
+						<path d="M5 21V7l8-4 8 4v14"/>
+						<path d="M9 10a2 2 0 1 1-4 0v11"/>
+						<rect x="13" y="12" width="4" height="4"/>
+					</svg>
+					<span class="tooltip">Habitación Retro</span>
+				</button>
+
+				<!-- Code Button -->
+				<button class="settings-btn" id="code-btn" aria-label="Enter Secret Code">
+					<svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+						<rect x="2" y="4" width="20" height="16" rx="2"/>
+						<path d="M6 8h.01"/>
+						<path d="M10 8h.01"/>
+						<path d="M14 8h.01"/>
+						<path d="M18 8h.01"/>
+						<path d="M6 12h.01"/>
+						<path d="M10 12h.01"/>
+						<path d="M14 12h.01"/>
+						<path d="M18 12h.01"/>
+						<path d="M7 16h10"/>
+					</svg>
+					<span class="tooltip">Insert Code</span>
+				</button>
+				
+				<!-- Game Button -->
+				<button class="settings-btn" id="game-btn" aria-label="Tic Tac Toe">
+					<svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+						<line x1="6" y1="3" x2="6" y2="21"></line>
+						<line x1="18" y1="3" x2="18" y2="21"></line>
+						<line x1="3" y1="9" x2="21" y2="9"></line>
+						<line x1="3" y1="15" x2="21" y2="15"></line>
+					</svg>
+					<span class="tooltip">Tic-Tac-Ditto</span>
+				</button>
+			</div>
+
+			<!-- Volume Control -->
+			<div class="volume-wrapper" id="volume-wrapper">
+				<button class="volume-btn" id="volume-btn" aria-label="Toggle Music">
+					<svg class="volume-icon-on" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
+						<path d="M5 9v6h4l5 5V4L9 9H5zm18.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02zM14 3.23v2.06c2.89.86 5 3.54 5 6.71s-2.11 5.85-5 6.71v2.06c4.01-.91 7-4.49 7-8.77s-2.99-7.86-7-8.77z"/>
+					</svg>
+					<svg class="volume-icon-off" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="currentColor" style="display: none;">
+						<path d="M16.5 12c0-1.77-1.02-3.29-2.5-4.03v2.21l2.45 2.45c.03-.2.05-.41.05-.63zm2.5 0c0 .94-.2 1.82-.54 2.64l1.51 1.51C20.63 14.91 21 13.5 21 12c0-4.28-2.99-7.86-7-8.77v2.06c2.89.86 5 3.54 5 6.71zM4.27 3L3 4.27 7.73 9H3v6h4l5 5v-6.73l4.25 4.25c-.67.52-1.42.93-2.25 1.18v2.06c1.38-.31 2.63-.95 3.69-1.81L19.73 21 21 19.73l-9-9L4.27 3zM12 4L9.91 6.09 12 8.18V4z"/>
+					</svg>
+				</button>
+				<div class="volume-popup" id="volume-popup">
+					<div class="volume-slider-container">
+						<input type="range" min="0" max="100" value="30" class="volume-slider" id="volume-slider">
+						<div class="volume-level" id="volume-level">30%</div>
+					</div>
+					<div class="volume-label">🎵 Música Retro</div>
+				</div>
 			</div>
 
 			<div class="profile-section">
@@ -28,7 +117,6 @@ import Layout from '../layouts/Layout.astro';
 						<span class="window-title">about_me.txt</span>
 						<div class="window-controls">
 							<span class="control min">_</span>
-							<!-- Added class for targeting the arrow -->
 							<span class="control max open-target">□</span>
 							<span class="control close">×</span>
 						</div>
@@ -63,8 +151,9 @@ import Layout from '../layouts/Layout.astro';
 				</a>
 			</div>
 			
-			<div class="hidden-ditto" title="???">
+			<div class="hidden-ditto" id="hidden-ditto">
 				<div class="ditto-blob-mini"></div>
+				<span class="tooltip">¡Secreto! 🎉</span>
 			</div>
 		</div>
 		
@@ -77,6 +166,36 @@ import Layout from '../layouts/Layout.astro';
 			Your browser does not support the audio element.
 		</audio>
 	</main>
+
+	<!-- BSOD Overlay -->
+	<div id="bsod-overlay" class="bsod-overlay" style="display: none;">
+		<div class="bsod-content">
+			<span class="sad-face">:(</span>
+			<h1>Your PC ran into a problem and needs to restart.</h1>
+			<p>We're just collecting some error info, and then we'll restart for you.</p>
+			<p>20% complete</p>
+		</div>
+	</div>
+
+	<!-- Danger Button -->
+	<button id="danger-btn" class="danger-btn">⛔ NO TOCAR</button>
+	
+	<!-- Tic-Tac-Toe Modal -->
+	<div id="tictactoe-modal" class="tictactoe-modal">
+		<div class="game-content">
+			<div class="game-header">
+				<span>TIC-TAC-DITTO</span>
+				<button id="close-game" class="close-btn">X</button>
+			</div>
+			<div class="game-status" id="game-status">Turno: Ditto Rosa</div>
+			<div class="game-board" id="game-board">
+				<!-- Cells will be generated here -->
+			</div>
+			<button id="reset-game" class="retro-btn reset-game-btn">Reiniciar Partida</button>
+		</div>
+	</div>
+
+
 </Layout>
 
 <script>
@@ -95,20 +214,173 @@ import Layout from '../layouts/Layout.astro';
 <!-- They are far apart (Script is at top, HTML at bottom). I will do HTML first, then JS. -->
 
 <script>
+	// ===== LOADING SCREEN =====
+	window.addEventListener('load', () => {
+		const loadingScreen = document.getElementById('loading-screen');
+		if (loadingScreen) {
+			setTimeout(() => {
+				loadingScreen.classList.add('hidden');
+				setTimeout(() => loadingScreen.remove(), 500);
+			}, 1000);
+		}
+		// Start particles after load
+		initParticles();
+	});
+
+	// ===== DARK MODE TOGGLE =====
+	const darkModeToggle = document.getElementById('dark-mode-toggle');
+	const iconSun = document.querySelector('.icon-sun') as HTMLElement;
+	const iconMoon = document.querySelector('.icon-moon') as HTMLElement;
+	
+	// Check saved preference
+	const savedDarkMode = localStorage.getItem('darkMode') === 'true';
+	if (savedDarkMode) {
+		document.documentElement.classList.add('dark-mode');
+		if (iconSun) iconSun.style.display = 'none';
+		if (iconMoon) iconMoon.style.display = 'block';
+	}
+	
+	if (darkModeToggle) {
+		darkModeToggle.addEventListener('click', () => {
+			document.documentElement.classList.toggle('dark-mode');
+			const isDark = document.documentElement.classList.contains('dark-mode');
+			localStorage.setItem('darkMode', isDark.toString());
+			
+			if (iconSun && iconMoon) {
+				iconSun.style.display = isDark ? 'none' : 'block';
+				iconMoon.style.display = isDark ? 'block' : 'none';
+			}
+		});
+	}
+
+	// ===== CRT TOGGLE =====
+	const crtToggle = document.getElementById('crt-toggle');
+	const crtOverlay = document.querySelector('.crt-overlay') as HTMLElement;
+	
+	// Check saved preference
+	const savedCrt = localStorage.getItem('crtDisabled') === 'true';
+	if (savedCrt && crtOverlay) {
+		crtOverlay.classList.add('hidden');
+	}
+	
+	if (crtToggle && crtOverlay) {
+		crtToggle.addEventListener('click', () => {
+			crtOverlay.classList.toggle('hidden');
+			const isHidden = crtOverlay.classList.contains('hidden');
+			localStorage.setItem('crtDisabled', isHidden.toString());
+		});
+	}
+
+	// ===== CURSOR TRAIL =====
+	let trailEnabled = true;
+	let lastTrailTime = 0;
+	const trailDelay = 50; // ms between trail particles
+	
+	document.addEventListener('mousemove', (e) => {
+		if (!trailEnabled) return;
+		
+		const now = Date.now();
+		if (now - lastTrailTime < trailDelay) return;
+		lastTrailTime = now;
+		
+		createTrailParticle(e.clientX, e.clientY);
+	});
+	
+	function createTrailParticle(x: number, y: number) {
+		const particle = document.createElement('div');
+		particle.className = 'cursor-trail';
+		
+		// Random size
+		const size = Math.random() * 15 + 10;
+		particle.style.width = size + 'px';
+		particle.style.height = size + 'px';
+		
+		// Position at cursor
+		particle.style.left = (x - size / 2) + 'px';
+		particle.style.top = (y - size / 2) + 'px';
+		
+		document.body.appendChild(particle);
+		
+		// Remove after animation
+		setTimeout(() => {
+			particle.remove();
+		}, 600);
+	}
+
+	// ===== ROOM BACKGROUND TOGGLE =====
+	const roomBtn = document.getElementById('room-btn');
+	const body = document.body;
+	
+	if (roomBtn) {
+		// Check localStorage
+		if (localStorage.getItem('roomMode') === 'enabled') {
+			body.classList.add('retro-room-mode');
+			roomBtn.classList.add('active');
+		}
+
+		roomBtn.addEventListener('click', () => {
+			body.classList.toggle('retro-room-mode');
+			roomBtn.classList.toggle('active');
+			
+			if (body.classList.contains('retro-room-mode')) {
+				localStorage.setItem('roomMode', 'enabled');
+			} else {
+				localStorage.setItem('roomMode', 'disabled');
+			}
+		});
+	}
+
+
+	// ===== FLOATING PARTICLES =====
+	function initParticles() {
+		const container = document.getElementById('particles-container');
+		if (!container) return;
+		
+		const particleCount = 15;
+		
+		for (let i = 0; i < particleCount; i++) {
+			createParticle(container);
+		}
+	}
+	
+	function createParticle(container: HTMLElement) {
+		const particle = document.createElement('div');
+		particle.className = 'floating-particle';
+		
+		// Random position
+		particle.style.left = Math.random() * 100 + '%';
+		particle.style.top = Math.random() * 100 + '%';
+		
+		// Random size (small stars or mini dittos)
+		const size = Math.random() * 15 + 10;
+		particle.style.width = size + 'px';
+		particle.style.height = size + 'px';
+		
+		// Random animation duration
+		particle.style.animationDuration = (Math.random() * 10 + 10) + 's';
+		particle.style.animationDelay = (Math.random() * 5) + 's';
+		
+		// Random opacity
+		particle.style.opacity = (Math.random() * 0.4 + 0.2).toString();
+		
+		container.appendChild(particle);
+	}
+
+	// ===== WINDOW CONTROLS =====
 	const minBtn = document.querySelector('.control.min') as HTMLElement;
 	const maxBtn = document.querySelector('.control.max') as HTMLElement;
 	const closeBtn = document.querySelector('.control.close') as HTMLElement;
-	const windowContent = document.querySelector('.window-content') as HTMLElement;
+	const windowContentEl = document.querySelector('.window-content') as HTMLElement;
 	const windowElement = document.querySelector('.pixel-window') as HTMLElement;
-	const clickHint = document.querySelector('.click-hint') as HTMLElement;
+	const clickHintEl = document.querySelector('.click-hint') as HTMLElement;
 
 	function showContent() {
-		if (windowContent) windowContent.style.display = 'block';
-		if (clickHint) clickHint.style.display = 'none';
+		if (windowContentEl) windowContentEl.style.display = 'block';
+		if (clickHintEl) clickHintEl.style.display = 'none';
 	}
 
 	function hideContent() {
-		if (windowContent) windowContent.style.display = 'none';
+		if (windowContentEl) windowContentEl.style.display = 'none';
 	}
 
 	if (minBtn) {
@@ -126,24 +398,22 @@ import Layout from '../layouts/Layout.astro';
 	}
 
 	// Hint click also opens
-	if (clickHint) {
-		clickHint.addEventListener('click', showContent);
+	if (clickHintEl) {
+		clickHintEl.addEventListener('click', showContent);
 	}
 
-	// Ditto Transformation
+	// ===== DITTO TRANSFORMATION =====
 	const profileImg = document.querySelector('.profile-img') as HTMLImageElement;
 	const originalSrc = '/mr retro.jpg';
 	const subtitle = document.querySelector('.subtitle') as HTMLElement;
-	const originalSubtitle = subtitle.innerText;
+	const originalSubtitle = subtitle ? subtitle.innerText : '';
 
-	// The specific animated dancing Ditto
 	const dancingDitto = '/ditto.gif';
 	let isDitto = false;
 
 	if (profileImg) {
 		const toggleDitto = () => {
 			if (!isDitto) {
-				// Transform to Ditto
 				profileImg.style.transform = 'scale(0.8) rotate(360deg)';
 				profileImg.style.filter = 'hue-rotate(90deg) blur(2px)';
 				
@@ -161,7 +431,6 @@ import Layout from '../layouts/Layout.astro';
 				}, 200);
 				isDitto = true;
 			} else {
-				// Revert to original
 				profileImg.style.transform = 'scale(0.8)';
 				profileImg.style.filter = 'blur(2px)';
 				
@@ -181,14 +450,44 @@ import Layout from '../layouts/Layout.astro';
 			}
 		};
 
-		// Click to toggle
 		profileImg.addEventListener('click', toggleDitto);
 		profileImg.style.cursor = 'pointer';
 	}
 
-	// Hidden Ditto - Party Mode
-	const hiddenDitto = document.querySelector('.hidden-ditto') as HTMLElement;
+	// ===== HIDDEN DITTO - PARTY MODE =====
+	const hiddenDitto = document.getElementById('hidden-ditto');
 	let splitPartyMode = false;
+	let rainInterval: number | undefined;
+
+	function createRainDrop() {
+		const drop = document.createElement('img');
+		drop.src = '/ditto.gif';
+		drop.classList.add('ditto-rain-drop');
+		drop.style.left = Math.random() * 100 + 'vw';
+		drop.style.animationDuration = Math.random() * 2 + 3 + 's';
+		drop.style.opacity = Math.random() * 0.5 + 0.5 + '';
+		drop.style.width = Math.random() * 30 + 20 + 'px';
+		
+		document.body.appendChild(drop);
+
+		setTimeout(() => {
+			drop.remove();
+		}, 5000);
+	}
+
+	function activatePartyMode() {
+		if (!rainInterval) {
+			rainInterval = setInterval(createRainDrop, 300);
+		}
+	}
+
+	function deactivatePartyMode() {
+		if (rainInterval) {
+			clearInterval(rainInterval);
+			rainInterval = undefined;
+		}
+		document.querySelectorAll('.ditto-rain-drop').forEach(el => el.remove());
+	}
 
 	if (hiddenDitto) {
 		hiddenDitto.addEventListener('click', () => {
@@ -201,90 +500,345 @@ import Layout from '../layouts/Layout.astro';
 		});
 	}
 
-	// Rain of Dittos Logic
-	let rainInterval: number | undefined;
-
-	function createRainDrop() {
-		const drop = document.createElement('img');
-		drop.src = '/ditto.gif';
-		drop.classList.add('ditto-rain-drop');
-		drop.style.left = Math.random() * 100 + 'vw';
-		drop.style.animationDuration = Math.random() * 2 + 3 + 's'; // 3-5s fall
-		drop.style.opacity = Math.random() * 0.5 + 0.5 + '';
-		drop.style.width = Math.random() * 30 + 20 + 'px'; // Random size
-		
-		document.body.appendChild(drop);
-
-		// Remove after animation
-		setTimeout(() => {
-			drop.remove();
-		}, 5000);
-	}
-
-	function activatePartyMode() {
-		// alert('✨ ¡LLUVIA DE DITTOS! ✨'); // Removed alert for smoother experience
-		if (!rainInterval) {
-			rainInterval = setInterval(createRainDrop, 300); // New ditto every 300ms
-		}
-	}
-
-	function deactivatePartyMode() {
-		if (rainInterval) {
-			clearInterval(rainInterval);
-			rainInterval = undefined;
-		}
-		// Remove existing drops
-		document.querySelectorAll('.ditto-rain-drop').forEach(el => el.remove());
-	}
-
-	// Music Player Logic
-	const volumeControl = document.querySelector('.volume-control') as HTMLElement;
+	// ===== MUSIC PLAYER WITH VOLUME SLIDER =====
+	const volumeWrapper = document.getElementById('volume-wrapper');
+	const volumeBtn = document.getElementById('volume-btn');
+	const volumePopup = document.getElementById('volume-popup');
+	const volumeSlider = document.getElementById('volume-slider') as HTMLInputElement;
+	const volumeLevel = document.getElementById('volume-level');
+	const volumeIconOn = document.querySelector('.volume-icon-on') as HTMLElement;
+	const volumeIconOff = document.querySelector('.volume-icon-off') as HTMLElement;
 	const bgMusic = document.getElementById('bg-music') as HTMLAudioElement;
 	let isPlaying = false;
+	let isPopupOpen = false;
 
-	if (volumeControl && bgMusic) {
-		bgMusic.volume = 0.3; // Lower volume by default
+	if (bgMusic) {
+		bgMusic.volume = 0.3;
+	}
+
+	// Toggle popup on wrapper hover
+	if (volumeWrapper) {
+		volumeWrapper.addEventListener('mouseenter', () => {
+			isPopupOpen = true;
+			volumePopup?.classList.add('visible');
+		});
 		
-		volumeControl.addEventListener('click', () => {
+		volumeWrapper.addEventListener('mouseleave', () => {
+			isPopupOpen = false;
+			volumePopup?.classList.remove('visible');
+		});
+	}
+
+	// Play/Pause toggle
+	if (volumeBtn && bgMusic) {
+		volumeBtn.addEventListener('click', (e) => {
+			e.stopPropagation();
 			if (isPlaying) {
 				bgMusic.pause();
-				volumeControl.classList.add('muted');
-				volumeControl.style.opacity = '0.5';
+				volumeBtn.classList.add('muted');
+				if (volumeIconOn) volumeIconOn.style.display = 'none';
+				if (volumeIconOff) volumeIconOff.style.display = 'block';
 			} else {
-				bgMusic.play().catch(e => console.log("Audio play failed, user interaction needed first.", e));
-				volumeControl.classList.remove('muted');
-				volumeControl.style.opacity = '1';
+				bgMusic.play().catch(e => console.log("Audio play failed", e));
+				volumeBtn.classList.remove('muted');
+				if (volumeIconOn) volumeIconOn.style.display = 'block';
+				if (volumeIconOff) volumeIconOff.style.display = 'none';
 			}
 			isPlaying = !isPlaying;
 		});
-		
-		// Set initial state
-		volumeControl.style.opacity = '0.5';
+	}
+
+	// Volume slider
+	if (volumeSlider && bgMusic && volumeLevel) {
+		volumeSlider.addEventListener('input', () => {
+			const value = parseInt(volumeSlider.value);
+			bgMusic.volume = value / 100;
+			volumeLevel.textContent = value + '%';
+			
+			// Update icon based on volume
+			if (value === 0) {
+				if (volumeIconOn) volumeIconOn.style.display = 'none';
+				if (volumeIconOff) volumeIconOff.style.display = 'block';
+			} else if (isPlaying) {
+				if (volumeIconOn) volumeIconOn.style.display = 'block';
+				if (volumeIconOff) volumeIconOff.style.display = 'none';
+			}
+		});
 	}
 </script>
 
 <style>
-	/* Volume Control Styles */
-	.volume-control {
+	/* ===== LOADING SCREEN ===== */
+	.loading-screen {
+		position: fixed;
+		top: 0;
+		left: 0;
+		width: 100vw;
+		height: 100vh;
+		background: var(--bg-primary, #cbb4d4);
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		z-index: 10000;
+		transition: opacity 0.5s ease;
+	}
+	
+	.loading-screen.hidden {
+		opacity: 0;
+		pointer-events: none;
+	}
+	
+	.loading-ditto {
+		text-align: center;
+	}
+	
+	.loading-ditto-img {
+		width: 100px;
+		height: 100px;
+		animation: loadingBounce 0.6s ease-in-out infinite;
+	}
+	
+	.loading-text {
+		font-size: 1.5rem;
+		margin-top: 1rem;
+		color: var(--text-primary, #332b3b);
+		animation: loadingPulse 1s ease-in-out infinite;
+	}
+	
+	@keyframes loadingBounce {
+		0%, 100% { transform: translateY(0) scale(1); }
+		50% { transform: translateY(-20px) scale(1.1); }
+	}
+	
+	@keyframes loadingPulse {
+		0%, 100% { opacity: 1; }
+		50% { opacity: 0.5; }
+	}
+
+	/* ===== PARTICLES CONTAINER ===== */
+	.particles-container {
+		position: fixed;
+		top: 0;
+		left: 0;
+		width: 100vw;
+		height: 100vh;
+		pointer-events: none;
+		z-index: 1;
+		overflow: hidden;
+	}
+	
+	.floating-particle {
+		position: absolute;
+		background: var(--accent-purple, #d6a2e8);
+		border-radius: 50%;
+		animation: particleFloat linear infinite;
+	}
+	
+
+	@keyframes particleFloat {
+		0% { transform: translateY(0) translateX(0) rotate(0deg); }
+		25% { transform: translateY(-30px) translateX(20px) rotate(90deg); }
+		50% { transform: translateY(0) translateX(40px) rotate(180deg); }
+		75% { transform: translateY(30px) translateX(20px) rotate(270deg); }
+		100% { transform: translateY(0) translateX(0) rotate(360deg); }
+	}
+
+	/* ===== SETTINGS CONTROLS ===== */
+	.settings-controls {
+		position: absolute;
+		top: -20px;
+		left: -20px;
+		display: flex;
+		gap: 8px;
+		z-index: 1000;
+	}
+	
+	.settings-btn {
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		width: 44px;
+		height: 44px;
+		background: var(--accent-pink, #ff9ff3);
+		border: 3px solid var(--border-color, #332b3b);
+		border-radius: 50%;
+		cursor: pointer;
+		color: var(--text-primary, #332b3b);
+		box-shadow: 3px 3px 0 var(--border-color, #332b3b);
+		transition: all 0.2s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+		position: relative;
+	}
+	
+	.settings-btn:hover {
+		transform: translateY(-3px) scale(1.1);
+		box-shadow: 5px 5px 0 var(--border-color, #332b3b);
+	}
+	
+	.settings-btn:active {
+		transform: translateY(1px) scale(0.95);
+		box-shadow: 1px 1px 0 var(--border-color, #332b3b);
+	}
+
+	/* ===== TOOLTIPS ===== */
+	.tooltip {
+		position: absolute;
+		bottom: 120%;
+		left: 50%;
+		transform: translateX(-50%) scale(0.8);
+		background: var(--border-color, #332b3b);
+		color: #fff;
+		padding: 6px 12px;
+		border-radius: 6px;
+		font-size: 0.85rem;
+		white-space: nowrap;
+		opacity: 0;
+		pointer-events: none;
+		transition: all 0.2s ease;
+		z-index: 1001;
+	}
+	
+	.tooltip::after {
+		content: '';
+		position: absolute;
+		top: 100%;
+		left: 50%;
+		transform: translateX(-50%);
+		border: 6px solid transparent;
+		border-top-color: var(--border-color, #332b3b);
+	}
+	
+	.settings-btn:hover .tooltip,
+	.hidden-ditto:hover .tooltip {
+		opacity: 1;
+		transform: translateX(-50%) scale(1);
+	}
+
+	/* ===== VOLUME WRAPPER & POPUP ===== */
+	.volume-wrapper {
 		position: absolute;
 		top: -20px;
 		right: -20px;
 		z-index: 1000;
-		cursor: pointer;
-		color: #fff;
-		background: #ff9ff3; /* Pink pop color */
-		padding: 12px;
-		border-radius: 50%;
-		border: 4px solid #332b3b;
-		box-shadow: 4px 4px 0 #332b3b;
-		transition: transform 0.2s, background 0.2s;
-	}
-
-	.volume-control:hover {
-		transform: scale(1.1) rotate(5deg);
-		background: #e056fd;
 	}
 	
+	.volume-btn {
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		width: 52px;
+		height: 52px;
+		background: var(--accent-pink, #ff9ff3);
+		border: 4px solid var(--border-color, #332b3b);
+		border-radius: 50%;
+		cursor: pointer;
+		color: var(--text-primary, #332b3b);
+		box-shadow: 4px 4px 0 var(--border-color, #332b3b);
+		transition: all 0.2s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+	}
+	
+	.volume-btn:hover {
+		transform: scale(1.1) rotate(5deg) translateY(-3px);
+		background: #e056fd;
+		box-shadow: 6px 6px 0 var(--border-color, #332b3b);
+	}
+	
+	.volume-btn.muted {
+		opacity: 0.6;
+	}
+	
+	.volume-popup {
+		position: absolute;
+		top: 55px;
+		right: 0;
+		background: var(--bg-secondary, rgba(255, 255, 255, 0.95));
+		border: 3px solid var(--border-color, #332b3b);
+		border-radius: 12px;
+		padding: 1rem;
+		box-shadow: 6px 6px 0 var(--border-color, #332b3b);
+		opacity: 0;
+		transform: translateY(-10px) scale(0.9);
+		pointer-events: none;
+		transition: all 0.2s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+		min-width: 180px;
+	}
+	
+	/* Invisible bridge to prevent closing when moving from button to popup */
+	.volume-popup::before {
+		content: '';
+		position: absolute;
+		top: -20px;
+		left: 0;
+		width: 100%;
+		height: 20px;
+		background: transparent;
+	}
+	
+	.volume-popup.visible {
+		opacity: 1;
+		transform: translateY(0) scale(1);
+		pointer-events: auto;
+	}
+	
+	.volume-slider-container {
+		display: flex;
+		flex-direction: column;
+		align-items: center;
+		gap: 8px;
+	}
+	
+	.volume-slider {
+		-webkit-appearance: none;
+		appearance: none;
+		width: 100%;
+		height: 10px;
+		background: linear-gradient(to right, var(--accent-pink, #ff9ff3), var(--accent-purple, #d6a2e8));
+		border-radius: 5px;
+		border: 2px solid var(--border-color, #332b3b);
+		outline: none;
+		cursor: pointer;
+	}
+	
+	.volume-slider::-webkit-slider-thumb {
+		-webkit-appearance: none;
+		appearance: none;
+		width: 22px;
+		height: 22px;
+		background: var(--accent-pink, #ff9ff3);
+		border: 3px solid var(--border-color, #332b3b);
+		border-radius: 50%;
+		cursor: pointer;
+		box-shadow: 2px 2px 0 var(--border-color, #332b3b);
+		transition: transform 0.2s;
+	}
+	
+	.volume-slider::-webkit-slider-thumb:hover {
+		transform: scale(1.2);
+	}
+	
+	.volume-slider::-moz-range-thumb {
+		width: 22px;
+		height: 22px;
+		background: var(--accent-pink, #ff9ff3);
+		border: 3px solid var(--border-color, #332b3b);
+		border-radius: 50%;
+		cursor: pointer;
+		box-shadow: 2px 2px 0 var(--border-color, #332b3b);
+	}
+	
+	.volume-level {
+		font-size: 1.2rem;
+		font-weight: bold;
+		color: var(--text-primary, #332b3b);
+		text-align: center;
+	}
+	
+	.volume-label {
+		font-size: 0.9rem;
+		color: var(--text-primary, #332b3b);
+		opacity: 0.8;
+		text-align: center;
+		margin-top: 6px;
+	}
 
 	@keyframes rainbow {
 		0% { filter: hue-rotate(0deg); }
@@ -315,25 +869,26 @@ import Layout from '../layouts/Layout.astro';
 		z-index: -1;
 		opacity: 0.15;
 		background-image: 
-			linear-gradient(#332b3b 1px, transparent 1px),
-			linear-gradient(90deg, #332b3b 1px, transparent 1px);
+			linear-gradient(var(--border-color, #332b3b) 1px, transparent 1px),
+			linear-gradient(90deg, var(--border-color, #332b3b) 1px, transparent 1px);
 		background-size: 30px 30px;
 		animation: bgPan 20s linear infinite;
 	}
 
 	.content-wrapper {
 		position: relative;
-		background: rgba(255, 255, 255, 0.4);
+		background: var(--bg-secondary, rgba(255, 255, 255, 0.4));
 		backdrop-filter: blur(8px);
 		padding: 3rem;
 		border-radius: 20px;
-		border: 4px solid #332b3b;
+		border: 4px solid var(--border-color, #332b3b);
 		box-shadow: 
-			8px 8px 0px #332b3b,
-			inset 2px 2px 0px rgba(255, 255, 255, 0.5);
+			8px 8px 0px var(--border-color, #332b3b),
+			inset 2px 2px 0px rgba(255, 255, 255, 0.2);
 		text-align: center;
 		max-width: 500px;
 		width: 100%;
+		transition: background 0.3s ease, border-color 0.3s ease;
 	}
 
 	.avatar-container {
@@ -349,8 +904,8 @@ import Layout from '../layouts/Layout.astro';
 		height: 150px;
 		object-fit: cover;
 		border-radius: 50%;
-		border: 4px solid #332b3b;
-		box-shadow: 6px 6px 0px rgba(51, 43, 59, 0.5);
+		border: 4px solid var(--border-color, #332b3b);
+		box-shadow: 6px 6px 0px var(--shadow-color, rgba(51, 43, 59, 0.5));
 		transition: transform 0.3s, filter 0.3s;
 	}
 
@@ -363,14 +918,16 @@ import Layout from '../layouts/Layout.astro';
 		font-size: 3rem;
 		margin: 0;
 		text-transform: uppercase;
-		text-shadow: 2px 2px 0px #ff9ff3;
+		text-shadow: 2px 2px 0px var(--accent-pink, #ff9ff3);
 		letter-spacing: 2px;
+		color: var(--text-primary, #332b3b);
 	}
 
 	.subtitle {
 		font-size: 1.2rem;
 		margin: 0.5rem 0 2rem;
 		opacity: 0.8;
+		color: var(--text-primary, #332b3b);
 	}
 
 	.about-section {
@@ -379,16 +936,16 @@ import Layout from '../layouts/Layout.astro';
 	}
 
 	.pixel-window {
-		background: #fff;
-		border: 3px solid #332b3b;
-		box-shadow: 6px 6px 0px rgba(51, 43, 59, 0.5);
+		background: var(--bg-secondary, #fff);
+		border: 3px solid var(--border-color, #332b3b);
+		box-shadow: 6px 6px 0px var(--shadow-color, rgba(51, 43, 59, 0.5));
 		text-align: left;
 		transition: all 0.2s;
 		position: relative;
 	}
 
 	.window-bar {
-		background: #332b3b;
+		background: var(--border-color, #332b3b);
 		color: #fff;
 		padding: 5px 10px;
 		display: flex;
@@ -410,10 +967,11 @@ import Layout from '../layouts/Layout.astro';
 	.control {
 		cursor: pointer;
 		font-weight: bold;
+		transition: color 0.2s;
 	}
 	
 	.control:hover {
-		color: #ff9ff3;
+		color: var(--accent-pink, #ff9ff3);
 	}
 
 	/* Hint Styles */
@@ -421,12 +979,12 @@ import Layout from '../layouts/Layout.astro';
 		position: absolute;
 		top: -30px;
 		right: 30px;
-		background: #ff9ff3;
-		color: #332b3b;
+		background: var(--accent-pink, #ff9ff3);
+		color: var(--border-color, #332b3b);
 		padding: 2px 8px;
-		border: 2px solid #332b3b;
+		border: 2px solid var(--border-color, #332b3b);
 		font-size: 0.8rem;
-		animation: bounce 1s infinite;
+		animation: hintBounce 1s infinite;
 		pointer-events: auto;
 		cursor: pointer;
 	}
@@ -439,10 +997,10 @@ import Layout from '../layouts/Layout.astro';
 		transform: translateX(-50%);
 		border-left: 6px solid transparent;
 		border-right: 6px solid transparent;
-		border-top: 6px solid #332b3b;
+		border-top: 6px solid var(--border-color, #332b3b);
 	}
 
-	@keyframes bounce {
+	@keyframes hintBounce {
 		0%, 100% { transform: translateY(0); }
 		50% { transform: translateY(-5px); }
 	}
@@ -453,14 +1011,14 @@ import Layout from '../layouts/Layout.astro';
 	}
 
 	.profile-img.dancing {
-		animation: dance 0.4s infinite ease-in-out !important; /* Override float */
+		animation: dance 0.4s infinite ease-in-out !important;
 	}
 
 	.window-content {
 		padding: 1.5rem;
 		font-size: 1.1rem;
 		line-height: 1.4;
-		color: #332b3b;
+		color: var(--text-primary, #332b3b);
 	}
 
 	.window-content p {
@@ -477,45 +1035,33 @@ import Layout from '../layouts/Layout.astro';
 		gap: 1rem;
 	}
 
+	/* ===== RETRO BUTTONS WITH BOUNCE ===== */
 	.retro-btn {
 		display: flex;
 		align-items: center;
 		justify-content: center;
 		padding: 1rem;
-		background: #fff;
-		border: 3px solid #332b3b;
-		color: #332b3b;
+		background: var(--bg-secondary, #fff);
+		border: 3px solid var(--border-color, #332b3b);
+		color: var(--text-primary, #332b3b);
 		text-decoration: none;
 		font-size: 1.5rem;
 		font-weight: bold;
-		box-shadow: 4px 4px 0px #332b3b;
-		transition: transform 0.1s, box-shadow 0.1s;
+		box-shadow: 4px 4px 0px var(--border-color, #332b3b);
+		transition: all 0.15s cubic-bezier(0.175, 0.885, 0.32, 1.275);
 		position: relative;
 		gap: 10px;
 		cursor: pointer;
 	}
 
 	.retro-btn:hover {
-		transform: translate(-2px, -2px);
-		box-shadow: 6px 6px 0px #332b3b;
-		background: #f0f0f0;
+		transform: translate(-3px, -3px) scale(1.02);
+		box-shadow: 7px 7px 0px var(--border-color, #332b3b);
 	}
 
 	.retro-btn:active {
-		transform: translate(2px, 2px);
-		box-shadow: 2px 2px 0px #332b3b;
-	}
-
-	.hit-counter {
-		margin-top: 2rem;
-		font-family: 'VT323', monospace;
-		font-size: 1.5rem;
-		background: #000;
-		color: #0f0;
-		padding: 5px 10px;
-		border: 2px solid #555;
-		box-shadow: inset 0 0 5px rgba(0, 255, 0, 0.5);
-		letter-spacing: 3px;
+		transform: translate(2px, 2px) scale(0.98);
+		box-shadow: 2px 2px 0px var(--border-color, #332b3b);
 	}
 
 	.pixel-icon {
@@ -523,6 +1069,7 @@ import Layout from '../layouts/Layout.astro';
 		height: 24px;
 	}
 
+	/* ===== HIDDEN DITTO ===== */
 	.hidden-ditto {
 		position: fixed;
 		bottom: 10px;
@@ -541,11 +1088,11 @@ import Layout from '../layouts/Layout.astro';
 	.ditto-blob-mini {
 		width: 100%;
 		height: 100%;
-		background: #d6a2e8;
-		border: 3px solid #332b3b;
+		background: var(--accent-purple, #d6a2e8);
+		border: 3px solid var(--border-color, #332b3b);
 		border-radius: 50% 50% 40% 40%;
 		position: relative;
-		box-shadow: 4px 4px 0 rgba(0,0,0,0.2);
+		box-shadow: 4px 4px 0 var(--shadow-color, rgba(0,0,0,0.2));
 	}
 
 	.ditto-blob-mini::before,
@@ -555,7 +1102,7 @@ import Layout from '../layouts/Layout.astro';
 		top: 15px;
 		width: 5px;
 		height: 5px;
-		background: #332b3b;
+		background: var(--border-color, #332b3b);
 		border-radius: 50%;
 	}
 
@@ -563,10 +1110,10 @@ import Layout from '../layouts/Layout.astro';
 	.ditto-blob-mini::after { right: 18px; }
 
 	/* Specific Button Colors */
-	.instagram:hover { background: #ffe4e1; transform: translate(-2px, -2px); box-shadow: 6px 6px 0px #332b3b; }
-	.youtube:hover { background: #ffcdd2; transform: translate(-2px, -2px); box-shadow: 6px 6px 0px #332b3b; }
-	.wallapop:hover { background: #e0f7fa; transform: translate(-2px, -2px); box-shadow: 6px 6px 0px #332b3b; }
-	.twitch:hover { background: #e3d7ff; transform: translate(-2px, -2px); box-shadow: 6px 6px 0px #332b3b; }
+	.instagram:hover { background: #ffe4e1; }
+	.youtube:hover { background: #ffcdd2; }
+	.wallapop:hover { background: #e0f7fa; }
+	.twitch:hover { background: #e3d7ff; }
 
 	@keyframes morph {
 		0% { border-radius: 46% 54% 27% 73% / 64% 45% 55% 36%; }
@@ -594,22 +1141,564 @@ import Layout from '../layouts/Layout.astro';
 		animation-fill-mode: forwards;
 	}
 
+	/* ===== CURSOR TRAIL ===== */
+	:global(.cursor-trail) {
+		position: fixed;
+		pointer-events: none;
+		z-index: 9998;
+		background: var(--accent-purple, #d6a2e8);
+		border: 2px solid var(--border-color, #332b3b);
+		border-radius: 50% 50% 40% 40%;
+		animation: trailFade 0.6s ease-out forwards;
+	}
+	
+	:global(.cursor-trail)::before,
+	:global(.cursor-trail)::after {
+		content: '';
+		position: absolute;
+		top: 30%;
+		width: 3px;
+		height: 3px;
+		background: var(--border-color, #332b3b);
+		border-radius: 50%;
+	}
+	
+	:global(.cursor-trail)::before { left: 25%; }
+	:global(.cursor-trail)::after { right: 25%; }
+	
+	@keyframes trailFade {
+		0% {
+			opacity: 0.8;
+			transform: scale(1) translateY(0);
+		}
+		100% {
+			opacity: 0;
+			transform: scale(0.3) translateY(20px);
+		}
+	}
+
 	.site-footer {
 		margin-top: 2rem;
 		font-size: 1.2rem;
-		color: #332b3b;
+		color: var(--text-primary, #332b3b);
 		opacity: 0.8;
 		text-shadow: 1px 1px 0 rgba(255,255,255,0.5);
 	}
 
 	.site-footer a {
-		color: #332b3b;
+		color: var(--text-primary, #332b3b);
 		text-decoration: none;
 		border-bottom: 2px solid transparent;
 		transition: border-color 0.2s;
 	}
 
 	.site-footer a:hover {
-		border-bottom-color: #332b3b;
+		border-bottom-color: var(--text-primary, #332b3b);
 	}
+
+	/* ===== RESPONSIVE MOBILE ===== */
+	@media (max-width: 600px) {
+		main {
+			padding: 1rem;
+		}
+		
+		.content-wrapper {
+			padding: 2rem 1.5rem;
+			max-width: 100%;
+			margin: 0 0.5rem;
+		}
+		
+		h1 {
+			font-size: 2rem;
+		}
+		
+		.subtitle {
+			font-size: 1rem;
+		}
+		
+		.retro-btn {
+			padding: 0.8rem;
+			font-size: 1.2rem;
+		}
+		
+		.settings-controls {
+			top: -15px;
+			left: -10px;
+		}
+		
+		.settings-btn {
+			width: 38px;
+			height: 38px;
+		}
+		
+		.volume-control {
+			top: -15px;
+			right: -10px;
+			padding: 10px;
+		}
+		
+		.hidden-ditto {
+			width: 50px;
+			height: 40px;
+			bottom: 5px;
+			right: 10px;
+		}
+		
+		.profile-img {
+			width: 120px;
+			height: 120px;
+		}
+	}
+
+	@media (max-width: 400px) {
+		h1 {
+			font-size: 1.6rem;
+			letter-spacing: 1px;
+		}
+		
+		.content-wrapper {
+			padding: 1.5rem 1rem;
+		}
+		
+		.retro-btn {
+			font-size: 1rem;
+			gap: 8px;
+		}
+		
+		.pixel-icon {
+			width: 20px;
+			height: 20px;
+		}
+	}
+	/* ===== RETRO ROOM BACKGROUND ===== */
+	body.retro-room-mode {
+		background: url('/fondo.jpg') no-repeat center center fixed !important;
+		background-size: cover !important;
+	}
+	
+	body.retro-room-mode::before {
+		content: '';
+		position: fixed;
+		top: 0; left: 0; width: 100%; height: 100%;
+		background: rgba(0,0,0,0.3); /* Slight overlay for readability */
+		pointer-events: none;
+		z-index: 0;
+	}
+
+	.settings-btn.active {
+		background: #ffeb3b;
+		box-shadow: inset 2px 2px 0 rgba(0,0,0,0.2);
+		transform: translateY(2px);
+	}
+
+	/* ===== EASTER EGGS CSS ===== */
+	.danger-btn {
+		position: fixed;
+		bottom: 20px;
+		right: 20px;
+		background: #ff4444;
+		color: white;
+		border: 4px solid #cc0000;
+		padding: 10px 15px;
+		font-family: 'Press Start 2P', cursive;
+		font-size: 0.8rem;
+		cursor: pointer;
+		z-index: 100;
+		box-shadow: 4px 4px 0 #990000;
+		transition: transform 0.1s;
+	}
+	
+	.danger-btn:active {
+		transform: translate(2px, 2px);
+		box-shadow: 2px 2px 0 #990000;
+	}
+
+	.bsod-overlay {
+		position: fixed;
+		top: 0; left: 0;
+		width: 100vw; height: 100vh;
+		background: #0078d7;
+		color: white;
+		z-index: 9999;
+		display: flex;
+		flex-direction: column;
+		justify-content: center;
+		align-items: flex-start;
+		padding: 100px;
+		font-family: 'Segoe UI', sans-serif; /* BSOD font */
+		cursor: none;
+	}
+
+	.sad-face {
+		font-size: 10rem;
+		margin-bottom: 40px;
+	}
+
+	.bsod-content h1 {
+		font-size: 2rem;
+		margin-bottom: 20px;
+		font-weight: normal;
+	}
+
+	.joke-toast {
+		position: fixed;
+		top: 50%; left: 50%;
+		transform: translate(-50%, -50%);
+		background: rgba(0,0,0,0.8);
+		color: #55ff55; /* Hacker green */
+		padding: 20px 40px;
+		border-radius: 10px;
+		font-family: 'Press Start 2P', cursive;
+		font-size: 1.5rem;
+		z-index: 10000;
+		pointer-events: none;
+		border: 2px solid #55ff55;
+	}
+	
+	@keyframes glitch-skew {
+		0% { transform: skew(0deg) translate(0); }
+		20% { transform: skew(20deg) translate(-5px); }
+		40% { transform: skew(-20deg) translate(5px); }
+		60% { transform: skew(10deg) translate(-2px); }
+		80% { transform: skew(-10deg) translate(2px); }
+		100% { transform: skew(0deg) translate(0); }
+	}
+	
+	.glitch-active {
+		animation: glitch-skew 0.3s infinite linear;
+		filter: invert(1) hue-rotate(180deg) contrast(1.5) grayscale(1);
+		position: relative;
+	}
+
+	/* ===== TIC TAC TOE CSS ===== */
+	.tictactoe-modal {
+		position: fixed;
+		top: 50%; left: 50%;
+		transform: translate(-50%, -50%);
+		background: #332b3b;
+		padding: 4px;
+		border: 4px solid #fff;
+		box-shadow: 10px 10px 0 rgba(0,0,0,0.5);
+		z-index: 5000;
+		display: none; /* Toggled by JS */
+		font-family: 'Press Start 2P', cursive;
+	}
+	
+	.game-content {
+		background: #4a4a4a;
+		padding: 20px;
+		text-align: center;
+		color: white;
+		border: 2px solid #222;
+	}
+	
+	.game-header {
+		display: flex;
+		justify-content: space-between;
+		align-items: center;
+		margin-bottom: 20px;
+		font-size: 0.8rem;
+		color: #ffeb3b;
+	}
+	
+	.close-btn {
+		background: #ff4444;
+		border: 2px solid #fff;
+		color: white;
+		font-family: inherit;
+		cursor: pointer;
+		padding: 4px 8px;
+	}
+	
+	.game-board {
+		display: grid;
+		grid-template-columns: repeat(3, 80px);
+		grid-template-rows: repeat(3, 80px);
+		gap: 6px;
+		background: #fff; /* White grid lines */
+		border: 4px solid #fff;
+		margin-bottom: 20px;
+	}
+	
+	/* Static Game Board - Scoped works here */
+	.game-board {
+		display: grid;
+		grid-template-columns: repeat(3, 80px);
+		grid-template-rows: repeat(3, 80px);
+		gap: 6px;
+		background: #fff; /* White grid lines */
+		border: 4px solid #fff;
+		margin-bottom: 20px;
+	}
+	
+	/* Dynamic Cells - Needs :global because they are created by JS */
+	:global(.cell) {
+		background: #222 !important; /* Force Dark cells */
+		display: flex;
+		justify-content: center;
+		align-items: center;
+		cursor: pointer;
+		transition: background 0.2s;
+	}
+	
+	:global(.cell:hover) {
+		background: #333;
+	}
+	
+	:global(.cell img) {
+		width: 60px;
+		height: 60px;
+		image-rendering: pixels;
+	}
+	
+	.retro-btn {
+		background: var(--card-bg, #fff);
+		color: var(--text-primary, #332b3b);
+		border: 2px solid var(--border-color, #332b3b);
+		padding: 10px 20px;
+		font-family: inherit;
+		cursor: pointer;
+		box-shadow: 4px 4px 0 rgba(0,0,0,0.2);
+		text-decoration: none;
+		display: inline-flex;
+		align-items: center;
+		gap: 10px;
+		transition: transform 0.1s;
+	}
+	
+	.retro-btn:active {
+		transform: translate(2px, 2px);
+		box-shadow: 2px 2px 0 rgba(0,0,0,0.2);
+	}
+
+	.reset-game-btn {
+		background: #4caf50 !important; 
+		color: white !important;
+		border-color: white !important;
+		box-shadow: 4px 4px 0 rgba(0,0,0,0.5) !important;
+	}
+
 </style>
+
+<script>
+	// ===== BSOD LOGIC =====
+	const dangerBtn = document.getElementById('danger-btn');
+	const bsodOverlay = document.getElementById('bsod-overlay');
+
+
+	if (dangerBtn && bsodOverlay) {
+		dangerBtn.addEventListener('click', () => {
+			// Show BSOD
+			bsodOverlay.style.display = 'flex';
+			document.body.style.cursor = 'none'; // Hide cursor
+			
+			// Play a "glitch" sound if possible (optional)
+			
+			setTimeout(() => {
+				// Hide BSOD
+				bsodOverlay.style.display = 'none';
+				document.body.style.cursor = 'auto';
+			}, 2000);
+		});
+	}
+
+	// ===== SECRET CODE LOGIC =====
+	const codeBtn = document.getElementById('code-btn');
+	
+	if (codeBtn) {
+		codeBtn.addEventListener('click', () => {
+			const code = prompt("INPUT CHEAT CODE:");
+			if (code && code.toLowerCase().trim() === 'ditto') {
+				triggerDittoRain();
+			}
+		});
+	}
+
+	function triggerDittoRain() {
+		const container = document.getElementById('particles-container');
+		if (!container) return; // Should be garden-area or create new
+		
+		// Create a temporary container for rain
+		const rainContainer = document.createElement('div');
+		rainContainer.style.position = 'fixed';
+		rainContainer.style.top = '0';
+		rainContainer.style.left = '0';
+		rainContainer.style.width = '100vw';
+		rainContainer.style.height = '100vh';
+		rainContainer.style.pointerEvents = 'none';
+		rainContainer.style.zIndex = '9998';
+		document.body.appendChild(rainContainer);
+		
+		// Spawn 50 dittos
+		for (let i = 0; i < 50; i++) {
+			const ditto = document.createElement('img');
+			ditto.src = '/ditto.gif';
+			ditto.style.position = 'absolute';
+			ditto.style.left = Math.random() * 100 + 'vw';
+			ditto.style.top = -100 + 'px';
+			ditto.style.width = (30 + Math.random() * 50) + 'px';
+			ditto.style.opacity = '0.8';
+			ditto.style.filter = `hue-rotate(${Math.random() * 360}deg)`;
+			
+			// Fall animation
+			const duration = 2 + Math.random() * 3;
+			ditto.style.transition = `top ${duration}s linear, transform ${duration}s linear`;
+			
+			rainContainer.appendChild(ditto);
+			
+			// Trigger fall
+			setTimeout(() => {
+				ditto.style.top = '110vh';
+				ditto.style.transform = `rotate(${Math.random() * 720}deg)`;
+			}, 100);
+		}
+		
+		// Cleanup
+		setTimeout(() => {
+			rainContainer.remove();
+		}, 6000);
+		
+		alert("✨ DITTO MODE ACTIVATED ✨");
+	}
+
+	// ===== AVATAR GLITCH =====
+	const profileImg = document.querySelector('.profile-img');
+	if (profileImg) {
+		profileImg.addEventListener('click', () => {
+			profileImg.classList.add('glitch-active');
+			
+			// Optional: Randomly shift background for extra chaos
+			document.body.style.filter = 'hue-rotate(90deg)';
+			
+			setTimeout(() => {
+				profileImg.classList.remove('glitch-active');
+				document.body.style.filter = '';
+			}, 2000);
+		});
+	}
+	
+	// ===== KONAMI CODE =====
+	const konamiCode = ['ArrowUp','ArrowUp','ArrowDown','ArrowDown','ArrowLeft','ArrowRight','ArrowLeft','ArrowRight','b','a'];
+	let konamiIndex = 0;
+	
+	document.addEventListener('keydown', (e) => {
+		if (e.key === konamiCode[konamiIndex]) {
+			konamiIndex++;
+			if (konamiIndex === konamiCode.length) {
+				// Success
+				konamiIndex = 0;
+				alert('🎮 KONAMI CODE ACTIVATED: GOD MODE 🎮');
+				document.body.style.transform = 'scale(-1, 1)'; // Invert screen horizontally
+				setTimeout(() => {
+					document.body.style.transform = '';
+				}, 5000);
+			}
+		} else {
+			konamiIndex = 0;
+		}
+	});
+
+	// ===== TIC TAC TOE LOGIC =====
+	const gameBtn = document.getElementById('game-btn');
+	const gameModal = document.getElementById('tictactoe-modal');
+	const closeGameBtn = document.getElementById('close-game');
+	const gameBoard = document.getElementById('game-board');
+	const gameStatus = document.getElementById('game-status');
+	const resetGameBtn = document.getElementById('reset-game');
+	
+	let boardState = Array(9).fill(null);
+	let currentPlayer = 'pink'; // pink starts
+	let gameActive = true;
+	
+	if (gameBtn && gameModal && closeGameBtn && gameBoard && resetGameBtn && gameStatus) {
+		
+		// Toggle Modal
+		gameBtn.addEventListener('click', () => {
+			gameModal.style.display = 'block';
+			renderBoard();
+		});
+		
+		closeGameBtn.addEventListener('click', () => {
+			gameModal.style.display = 'none';
+		});
+		
+		resetGameBtn.addEventListener('click', () => {
+			boardState = Array(9).fill(null);
+			currentPlayer = 'pink';
+			gameActive = true;
+			gameStatus.innerText = "Turno: Ditto Rosa";
+			gameStatus.style.color = "white";
+			renderBoard();
+		});
+		
+		function renderBoard() {
+			gameBoard.innerHTML = '';
+			boardState.forEach((cell, index) => {
+				const cellDiv = document.createElement('div');
+				cellDiv.className = 'cell';
+				
+				if (cell) {
+					const img = document.createElement('img');
+					img.src = '/ditto.gif';
+					// Using Sepia + Saturate hack for reliable colors
+					if (cell === 'pink') {
+						// Pink/Magenta
+						img.style.filter = 'sepia(1) saturate(4) hue-rotate(300deg)';
+					} else {
+						// Blue/Cyan
+						img.style.filter = 'sepia(1) saturate(4) hue-rotate(180deg)';
+					}
+					cellDiv.appendChild(img);
+				}
+				
+				cellDiv.addEventListener('click', () => handleCellClick(index));
+				gameBoard.appendChild(cellDiv);
+			});
+		}
+		
+		function handleCellClick(index) {
+			if (!gameActive || boardState[index]) return;
+			
+			boardState[index] = currentPlayer;
+			checkResult();
+			
+			if (gameActive) {
+				currentPlayer = currentPlayer === 'pink' ? 'blue' : 'pink';
+				gameStatus.innerText = `Turno: Ditto ${currentPlayer === 'pink' ? 'Rosa' : 'Azul'}`;
+				renderBoard();
+			} else {
+				renderBoard(); // Render final state
+			}
+		}
+		
+		function checkResult() {
+			const winConditions = [
+				[0, 1, 2], [3, 4, 5], [6, 7, 8],
+				[0, 3, 6], [1, 4, 7], [2, 5, 8],
+				[0, 4, 8], [2, 4, 6]
+			];
+			
+			let roundWon = false;
+			for (let i = 0; i < winConditions.length; i++) {
+				const [a, b, c] = winConditions[i];
+				if (boardState[a] && boardState[a] === boardState[b] && boardState[a] === boardState[c]) {
+					roundWon = true;
+					break;
+				}
+			}
+			
+			if (roundWon) {
+				gameActive = false;
+				gameStatus.innerText = `¡Gana Ditto ${currentPlayer === 'pink' ? 'Rosa' : 'Azul'}! 🎉`;
+				gameStatus.style.color = "#4caf50";
+				return;
+			}
+			
+			if (!boardState.includes(null)) {
+				gameActive = false;
+				gameStatus.innerText = "¡Empate! 😐";
+				gameStatus.style.color = "#ffeb3b";
+			}
+		}
+	}
+</script>
