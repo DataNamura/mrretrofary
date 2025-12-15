@@ -7,12 +7,19 @@ import Layout from '../layouts/Layout.astro';
 		<div class="ditto-bg"></div>
 		
 		<div class="content-wrapper">
+			<!-- Volume Control Inside Card -->
+			<div class="volume-control" title="Toggle Music">
+				<svg class="pixel-icon" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
+					<path d="M5 9v6h4l5 5V4L9 9H5zm18.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02zM14 3.23v2.06c2.89.86 5 3.54 5 6.71s-2.11 5.85-5 6.71v2.06c4.01-.91 7-4.49 7-8.77s-2.99-7.86-7-8.77z"/>
+				</svg>
+			</div>
+
 			<div class="profile-section">
-				<div class="avatar-container">
+				<div class="profile-frame">
 					<img src="/mr retro.jpg" alt="Mr Retro Fary" class="profile-img" />
 				</div>
-				<h1>Mr Retro Fary</h1>
-				<p class="subtitle">Retro Collector & Content Creator</p>
+				<h1 class="glitch-text" data-text="Mr Retro Fary">Mr Retro Fary</h1>
+				<p class="subtitle">Retro Collector & Pixel Enthusiast</p>
 			</div>
 
 			<div class="about-section">
@@ -43,7 +50,7 @@ import Layout from '../layouts/Layout.astro';
 					Instagram
 				</a>
 				<a href="https://es.wallapop.com/user/mrretrofary-placeholder" target="_blank" class="retro-btn wallapop">
-					<svg class="pixel-icon" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="currentColor"><path d="M12.9 2h-1.8C5.2 2 2 4.9 2 11.2c0 2.6.6 4.7 2.2 6.5 1.5 1.7 3.5 1.9 4.3 1.9h.3c.6 0 1.1.5 1.1 1.1V22h3.9c5.2 0 8.2-2.9 8.2-8.3C22 7.1 19.3 2 12.9 2z"/></svg>
+					<svg class="pixel-icon" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="currentColor"><path d="M19.35 10.04C18.67 6.59 15.64 4 12 4 9.11 4 6.6 5.64 5.35 8.04 2.34 8.36 0 10.91 0 14c0 3.31 2.69 6 6 6h13c2.76 0 5-2.24 5-5 0-2.64-2.05-4.78-4.65-4.96z"/></svg>
 					Wallapop
 				</a>
 				<a href="https://twitch.tv/mrretrofary" target="_blank" class="retro-btn twitch">
@@ -56,8 +63,32 @@ import Layout from '../layouts/Layout.astro';
 				<div class="ditto-blob-mini"></div>
 			</div>
 		</div>
+		
+		<footer class="site-footer">
+			Creado por <a href="https://namuratech.com" target="_blank">namuratech.com</a>
+		</footer>
+
+		<audio id="bg-music" loop>
+			<source src="/Nostalgic Pokemon Music, but it's only generation 3 (Hoenn) [WViR2zZ-pfA].mp3" type="audio/mpeg">
+			Your browser does not support the audio element.
+		</audio>
 	</main>
 </Layout>
+
+<script>
+	// ... (Existing code for Hint, Avatar, Rain) ...
+
+	// Hint click also opens
+	const clickHint = document.querySelector('.click-hint');
+	const windowContent = document.querySelector('.window-content') as HTMLElement;
+	const pixelWindow = document.querySelector('.pixel-window');
+	// ... Re-declaring for context if needed, but assuming global scope in Module works.
+	// Actually, I need to update the EXISTING script block in the file, not append.
+	// I will target the script block specifically in the next tool call if this one is just HTML.
+	// Wait, I am replacing the HTML part here. I need to replace the JS part too.
+</script>
+<!-- Wait, replace_file_content replaces a BLOCK. I should do it in one go if they are close, or separate. -->
+<!-- They are far apart (Script is at top, HTML at bottom). I will do HTML first, then JS. -->
 
 <script>
 	const minBtn = document.querySelector('.control.min') as HTMLElement;
@@ -103,37 +134,33 @@ import Layout from '../layouts/Layout.astro';
 
 	// The specific animated dancing Ditto
 	const dancingDitto = '/ditto.gif';
+	let isDitto = false;
 
 	if (profileImg) {
-		profileImg.addEventListener('click', () => {
-			// Add morph effect
-			profileImg.style.transform = 'scale(0.8) rotate(360deg)';
-			profileImg.style.filter = 'hue-rotate(90deg) blur(2px)';
-			
-			setTimeout(() => {
-				// Use the specific dancing Ditto
-				profileImg.src = dancingDitto;
+		const toggleDitto = () => {
+			if (!isDitto) {
+				// Transform to Ditto
+				profileImg.style.transform = 'scale(0.8) rotate(360deg)';
+				profileImg.style.filter = 'hue-rotate(90deg) blur(2px)';
 				
-				// Reset effects but keep new image
-				profileImg.style.transform = 'scale(1.5)'; // Make it bigger to see the pixel art
-				profileImg.style.filter = 'none';
-				
-				// Update text
-				if (subtitle) {
-					subtitle.innerText = "¡Has encontrado a RetroFarDitto!";
-					subtitle.style.color = "#d6a2e8";
-					subtitle.style.fontWeight = "bold";
-					subtitle.style.textShadow = "1px 1px 0 #332b3b";
-				}
-
-				// We don't need CSS class 'dancing' anymore, the GIF bumps on its own.
-				
-			}, 300);
-
-			// Revert after 5 seconds
-			setTimeout(() => {
+				setTimeout(() => {
+					profileImg.src = dancingDitto;
+					profileImg.style.transform = 'scale(1.1)';
+					profileImg.style.filter = 'none';
+					
+					if (subtitle) {
+						subtitle.innerText = "¡Has encontrado a RetroFarDitto!";
+						subtitle.style.color = "#d6a2e8";
+						subtitle.style.fontWeight = "bold";
+						subtitle.style.textShadow = "1px 1px 0 #332b3b";
+					}
+				}, 200);
+				isDitto = true;
+			} else {
+				// Revert to original
 				profileImg.style.transform = 'scale(0.8)';
 				profileImg.style.filter = 'blur(2px)';
+				
 				setTimeout(() => {
 					profileImg.src = originalSrc;
 					profileImg.style.transform = 'scale(1)';
@@ -145,9 +172,14 @@ import Layout from '../layouts/Layout.astro';
 						subtitle.style.fontWeight = "";
 						subtitle.style.textShadow = "";
 					}
-				}, 300);
-			}, 5000);
-		});
+				}, 200);
+				isDitto = false;
+			}
+		};
+
+		// Click to toggle
+		profileImg.addEventListener('click', toggleDitto);
+		profileImg.style.cursor = 'pointer';
 	}
 
 	// Hidden Ditto - Party Mode
@@ -165,24 +197,98 @@ import Layout from '../layouts/Layout.astro';
 		});
 	}
 
+	// Rain of Dittos Logic
+	let rainInterval: number | undefined;
+
+	function createRainDrop() {
+		const drop = document.createElement('img');
+		drop.src = '/ditto.gif';
+		drop.classList.add('ditto-rain-drop');
+		drop.style.left = Math.random() * 100 + 'vw';
+		drop.style.animationDuration = Math.random() * 2 + 3 + 's'; // 3-5s fall
+		drop.style.opacity = Math.random() * 0.5 + 0.5 + '';
+		drop.style.width = Math.random() * 30 + 20 + 'px'; // Random size
+		
+		document.body.appendChild(drop);
+
+		// Remove after animation
+		setTimeout(() => {
+			drop.remove();
+		}, 5000);
+	}
+
 	function activatePartyMode() {
-		alert('✨ YOU FOUND THE HIDDEN DITTO! PARTY TIME! ✨');
-		document.body.style.animation = 'rainbow 2s linear infinite';
+		// alert('✨ ¡LLUVIA DE DITTOS! ✨'); // Removed alert for smoother experience
+		if (!rainInterval) {
+			rainInterval = setInterval(createRainDrop, 300); // New ditto every 300ms
+		}
 	}
 
 	function deactivatePartyMode() {
-		document.body.style.animation = 'none';
+		if (rainInterval) {
+			clearInterval(rainInterval);
+			rainInterval = undefined;
+		}
+		// Remove existing drops
+		document.querySelectorAll('.ditto-rain-drop').forEach(el => el.remove());
+	}
+
+	// Music Player Logic
+	const volumeControl = document.querySelector('.volume-control') as HTMLElement;
+	const bgMusic = document.getElementById('bg-music') as HTMLAudioElement;
+	let isPlaying = false;
+
+	if (volumeControl && bgMusic) {
+		bgMusic.volume = 0.3; // Lower volume by default
+		
+		volumeControl.addEventListener('click', () => {
+			if (isPlaying) {
+				bgMusic.pause();
+				volumeControl.classList.add('muted');
+				volumeControl.style.opacity = '0.5';
+			} else {
+				bgMusic.play().catch(e => console.log("Audio play failed, user interaction needed first.", e));
+				volumeControl.classList.remove('muted');
+				volumeControl.style.opacity = '1';
+			}
+			isPlaying = !isPlaying;
+		});
+		
+		// Set initial state
+		volumeControl.style.opacity = '0.5';
 	}
 </script>
 
 <style>
+	/* Volume Control Styles */
+	.volume-control {
+		position: absolute;
+		top: -20px;
+		right: -20px;
+		z-index: 1000;
+		cursor: pointer;
+		color: #fff;
+		background: #ff9ff3; /* Pink pop color */
+		padding: 12px;
+		border-radius: 50%;
+		border: 4px solid #332b3b;
+		box-shadow: 4px 4px 0 #332b3b;
+		transition: transform 0.2s, background 0.2s;
+	}
+
+	.volume-control:hover {
+		transform: scale(1.1) rotate(5deg);
+		background: #e056fd;
+	}
+	
+
 	@keyframes rainbow {
 		0% { filter: hue-rotate(0deg); }
 		100% { filter: hue-rotate(360deg); }
 	}
 
 	html {
-		cursor: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewport="0 0 24 24" style="fill:black;stroke:white;stroke-width:1px;"><path d="M5.5 3.21l10.82 12.06h-5.46l2.12 4.41-2.9 1.13-2.13-4.46-3.8 3.8V3.21z"/></svg>'), auto;
+		cursor: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 32 32"><ellipse cx="16" cy="20" rx="14" ry="10" fill="%23d6a2e8" stroke="%23332b3b" stroke-width="2"/><ellipse cx="16" cy="20" rx="14" ry="10" fill="%23d6a2e8"/><circle cx="11" cy="18" r="2.5" fill="%23332b3b"/><circle cx="21" cy="18" r="2.5" fill="%23332b3b"/><ellipse cx="16" cy="22" rx="5" ry="2.5" fill="%23332b3b" opacity="0.2"/></svg>') 16 20, auto;
 	}
 
 	main {
@@ -212,6 +318,7 @@ import Layout from '../layouts/Layout.astro';
 	}
 
 	.content-wrapper {
+		position: relative;
 		background: rgba(255, 255, 255, 0.4);
 		backdrop-filter: blur(8px);
 		padding: 3rem;
@@ -380,7 +487,7 @@ import Layout from '../layouts/Layout.astro';
 		transition: transform 0.1s, box-shadow 0.1s;
 		position: relative;
 		gap: 10px;
-		cursor: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewport="0 0 24 24" style="fill:black;stroke:white;stroke-width:1px;"><path d="M5.5 3.21l10.82 12.06h-5.46l2.12 4.41-2.9 1.13-2.13-4.46-3.8 3.8V3.21z"/></svg>'), pointer;
+		cursor: pointer;
 	}
 
 	.retro-btn:hover {
@@ -464,5 +571,39 @@ import Layout from '../layouts/Layout.astro';
 	@keyframes bgPan {
 		0% { background-position: 0 0; }
 		100% { background-position: 30px 30px; }
+	}
+	
+	@keyframes fall {
+		0% { transform: translateY(-10vh) rotate(0deg); }
+		100% { transform: translateY(110vh) rotate(360deg); }
+	}
+
+	:global(.ditto-rain-drop) {
+		position: fixed;
+		top: -10vh;
+		z-index: 9999;
+		pointer-events: none;
+		animation-name: fall;
+		animation-timing-function: linear;
+		animation-fill-mode: forwards;
+	}
+
+	.site-footer {
+		margin-top: 2rem;
+		font-size: 1.2rem;
+		color: #332b3b;
+		opacity: 0.8;
+		text-shadow: 1px 1px 0 rgba(255,255,255,0.5);
+	}
+
+	.site-footer a {
+		color: #332b3b;
+		text-decoration: none;
+		border-bottom: 2px solid transparent;
+		transition: border-color 0.2s;
+	}
+
+	.site-footer a:hover {
+		border-bottom-color: #332b3b;
 	}
 </style>
